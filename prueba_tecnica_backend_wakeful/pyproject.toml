@@ -1,0 +1,54 @@
+[tool.poetry]
+name = "prueba-tecnica-backend-wakeful"
+version = "0.1.0"
+description = ""
+authors = ["Ivan Andre Scheel <andrescheel@protonmail.com>"]
+readme = "README.md"
+packages = [{include = "prueba_tecnica_backend_wakeful"}]
+
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+line_length = 88
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+
+[tool.ruff]
+line-length = 88
+fix = false
+fixable = ["E", "F", "I", "COM812"]
+show-source = true
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^4.2"
+djangorestframework = "^3.14.0"
+python-dotenv = "^1.0.0"
+pydantic = "^1.10.7"
+psycopg2-binary = "^2.9.6"
+gunicorn = "^20.1.0"
+djangorestframework-simplejwt = "^5.2.2"
+django-filter = "^23.1"
+django-cors-headers = "^3.14.0"
+phonenumberslite = "^8.13.10"
+requests = "^2.28.2"
+trench = {path="../libs/trench"}
+whitenoise = "^6.4.0"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "*"
+black = "*"
+isort = "*"
+ruff = "*"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

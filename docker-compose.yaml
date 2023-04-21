@@ -1,0 +1,34 @@
+# version: '3.7'
+
+services:
+  backend:
+    container_name: wakeful-backend
+    build:
+      dockerfile: ./Dockerfile.be-mfa
+    command: >
+      bash -c """
+      if [ ! -d "/code/static" ]; then mkdir /code/static ; fi &&
+      python /code/manage.py collectstatic --noinput &&
+      gunicorn prueba_tecnica_backend_wakeful.wsgi -b 0.0.0.0:8000 --reload
+      """
+    # command: tail -f /dev/null
+    env_file: ./prueba_tecnica_backend_wakeful/.env
+    volumes:
+      - ./prueba_tecnica_backend_wakeful:/code
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+  db:
+    container_name: wakeful-db
+    image: postgres:15.2
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: Assignment
+    ports:
+      - 5432:5432
+volumes:
+  postgres_data:

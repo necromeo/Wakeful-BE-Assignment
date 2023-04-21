@@ -1,0 +1,169 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-12-11 13:42+0100\n"
+"PO-Revision-Date: 2018-12-31 08:06+0000\n"
+"Language-Team: Polish (https://www.transifex.com/merixstudio/teams/94850/pl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: trench/backends/basic_mail.py:39
+msgid "Email message with MFA code has not been sent."
+msgstr ""
+
+#: trench/backends/basic_mail.py:42
+msgid "Email message with MFA code has been sent."
+msgstr ""
+
+#: trench/backends/sms_api.py:9 trench/backends/twilio.py:11
+#: trench/backends/yubikey.py:11
+msgid "Your verification code is: "
+msgstr ""
+
+#: trench/backends/sms_api.py:20 trench/backends/twilio.py:30
+msgid "SMS message with MFA code has been sent."
+msgstr ""
+
+#: trench/backends/yubikey.py:18
+msgid "Generate code using YubiKey"
+msgstr ""
+
+#: trench/models.py:13
+msgid "user"
+msgstr ""
+
+#: trench/models.py:17
+msgid "name"
+msgstr ""
+
+#: trench/models.py:21
+msgid "secret"
+msgstr ""
+
+#: trench/models.py:25
+msgid "is primary"
+msgstr ""
+
+#: trench/models.py:29
+msgid "is active"
+msgstr ""
+
+#: trench/models.py:33
+msgid "backup codes"
+msgstr ""
+
+#: trench/models.py:38
+msgid "MFA Method"
+msgstr ""
+
+#: trench/models.py:39
+msgid "MFA Methods"
+msgstr ""
+
+#: trench/serializers.py:61
+msgid "Required field not provided"
+msgstr ""
+
+#: trench/serializers.py:63
+msgid "Failed to update required User data. Try again."
+msgstr ""
+
+#: trench/serializers.py:127
+msgid "OTP code not provided."
+msgstr ""
+
+#: trench/serializers.py:128 trench/serializers.py:163
+msgid "Code invalid or expired."
+msgstr ""
+
+#: trench/serializers.py:166
+msgid "MFA Method to be deactivated cannot be chosen as new primary method."
+msgstr ""
+
+#: trench/serializers.py:171
+msgid "Selected new primary MFA method is not registered for current user."
+msgstr ""
+
+#: trench/serializers.py:175
+msgid "MFA Method selected as new primary method is not active"
+msgstr ""
+
+#: trench/serializers.py:230 trench/views/base.py:346
+msgid "Requested MFA method does not exists"
+msgstr ""
+
+#: trench/serializers.py:261
+msgid "User account is disabled."
+msgstr ""
+
+#: trench/serializers.py:265
+msgid "Unable to login with provided credentials."
+msgstr ""
+
+#: trench/serializers.py:279
+msgid "Invalid or expired token."
+msgstr ""
+
+#: trench/serializers.py:280 trench/serializers.py:323
+msgid "Invalid or expired code."
+msgstr ""
+
+#: trench/serializers.py:322
+msgid "2FA is not enabled."
+msgstr ""
+
+#: trench/serializers.py:324
+msgid "Target method does not exist or is not active"
+msgstr ""
+
+#: trench/settings.py:77
+msgid "sms_twilio"
+msgstr ""
+
+#: trench/settings.py:86
+msgid "sms_api"
+msgstr ""
+
+#: trench/settings.py:94
+msgid "email"
+msgstr ""
+
+#: trench/settings.py:98
+msgid "Your verification code"
+msgstr ""
+
+#: trench/settings.py:103
+msgid "app"
+msgstr ""
+
+#: trench/settings.py:109
+msgid "yubi"
+msgstr ""
+
+#: trench/urls/djoser.py:15
+msgid ""
+"Djoser not found in INSTALLED_APPS. Make sure you've installed it, and add "
+"appropriate entry in settings."
+msgstr ""
+
+#: trench/views/base.py:215
+msgid "Method already disabled."
+msgstr ""
+
+#: trench/views/base.py:245
+msgid "Failed to update MFA information"
+msgstr ""
+
+#: trench/views/base.py:278
+msgid "Method is disabled."
+msgstr ""

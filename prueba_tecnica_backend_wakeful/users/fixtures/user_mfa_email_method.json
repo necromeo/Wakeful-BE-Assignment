@@ -1,0 +1,14 @@
+[
+    {
+        "model": "trench.mfamethod",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "name": "email",
+            "secret": "N2G5STQOWD5ACXHUTMI2JTF27FYYBN5J",
+            "is_primary": true,
+            "is_active": true,
+            "_backup_codes": "pbkdf2_sha256$600000$Qzi2GFjIaLiy3iPFrQRvVA$pacrESACZnRiVj3CwgzUh1QxvdAJPgseLIz81EKnEqU=|pbkdf2_sha256$600000$5RzvwcTiRJqTg5om5VzdqE$xnzanQ9UT2t5/Os3oObQCHSC6UOpU+vCMlrbHqlKzrY=|pbkdf2_sha256$600000$5hZ9lr5vEZdzobuaHMCjzj$MvGdg5jC0Oe6kHZNxMtl64lgQcSrP3/+xkzUEFbSEHI=|pbkdf2_sha256$600000$LH7i2gtJhrPK3tDVKyXrui$9iBCrNOyHLSEGxDxnkrlH9dZcOe7R5mCmEfCtybZLuU=|pbkdf2_sha256$600000$TbiPRLmjuo7aWrpidDzLEb$hb7VzNZUl89+Ra6IvktwlRnTPOWR9MuZk/vhqJRTXnY="
+        }
+    }
+    ]

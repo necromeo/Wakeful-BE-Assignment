@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "trench"
+version = "0.1.1"
+description = "Versión customizada de trench para aceptar un AbrastBaseUser sin username"
+authors = ["Ivan Andre Scheel <andrescheel@protonmail.com>"]
+readme = "README.md"
+packages = [{include = "trench"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pyotp = "^2.6.0"
+twilio = "^6.56.0"
+yubico-client = "^1.13.0"
+boto3 = "^1.21.37"
+smsapi-client = "^2.4.5"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

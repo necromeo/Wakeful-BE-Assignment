@@ -1,0 +1,14 @@
+[
+    {
+        "model": "trench.mfamethod",
+        "pk": 2,
+        "fields": {
+            "user": 1,
+            "name": "app",
+            "secret": "DU6IJDSIYW4N4KW25AGPNWFTYA6Y57BX",
+            "is_primary": true,
+            "is_active": true,
+            "_backup_codes": ""
+        }
+    }
+    ]
