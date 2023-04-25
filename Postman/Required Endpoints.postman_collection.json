@@ -1,0 +1,632 @@
+{
+	"info": {
+		"_postman_id": "a9b7254e-4f66-401d-8936-e28e2db7050a",
+		"name": "Required Endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17145442"
+	},
+	"item": [
+		{
+			"name": "Login Process",
+			"item": [
+				{
+					"name": "First Step",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let access_token = pm.response.json().access;",
+									"let ephemeral_token = pm.response.json().ephemeral_token",
+									"let method = pm.response.json().method",
+									"",
+									"pm.environment.set(\"BEARER_TOKEN\", access_token);",
+									"pm.environment.set(\"EPHEMERAL_TOKEN\", ephemeral_token);",
+									"pm.environment.set(\"METHOD\", method);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOST}}/auth/login/",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Second Step",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let access_token = pm.response.json().access;",
+									"pm.environment.set(\"BEARER_TOKEN\", access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ephemeral_token",
+									"value": "{{EPHEMERAL_TOKEN}}",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOST}}/auth/login/code/",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"auth",
+								"login",
+								"code",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Set Up MFA",
+			"item": [
+				{
+					"name": "Email",
+					"item": [
+						{
+							"name": "Activacion de multiple factor de autentificacion Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let otp_token = pm.response.json().otp;",
+											"pm.environment.set(\"OTP\", otp_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{HOST}}/auth/email/activate/",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"auth",
+										"email",
+										"activate",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirmación de multiple factor de autentificacion Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "code",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{HOST}}/auth/email/activate/confirm/",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"auth",
+										"email",
+										"activate",
+										"confirm",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "App",
+					"item": [
+						{
+							"name": "Activacion de multiple factor de autentificacion",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let otp_token = pm.response.json().otp;",
+											"pm.environment.set(\"OTP\", otp_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{HOST}}/auth/app/activate/",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"auth",
+										"app",
+										"activate",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Confirmación de multiple factor de autentificacion",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "code",
+											"value": "746377",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{HOST}}/auth/app/activate/confirm/",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"auth",
+										"app",
+										"activate",
+										"confirm",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Request Code",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BEARER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "method",
+									"value": "email",
+									"type": "text"
+								},
+								{
+									"key": "method",
+									"value": "app",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOST}}/auth/code/request/",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"auth",
+								"code",
+								"request",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Update User Info",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BEARER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"test\",\n    \"last_name\": \"user\",\n    \"birthdate\": \"2023-01-01\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/users/1/",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"users",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show User Info",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BEARER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{HOST}}/users/1/",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"users",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Method Interactions",
+			"item": [
+				{
+					"name": "Email Deactivation",
+					"item": [
+						{
+							"name": "Deactivación",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{HOST}}/auth/email/deactivate/",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"auth",
+										"email",
+										"deactivate",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "App Deactivation",
+					"item": [
+						{
+							"name": "Deactivación",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{BEARER_TOKEN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{HOST}}/auth/app/deactivate/",
+									"host": [
+										"{{HOST}}"
+									],
+									"path": [
+										"auth",
+										"app",
+										"deactivate",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get user’s active MFA methods",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BEARER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}/auth/mfa/user-active-methods/",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"auth",
+								"mfa",
+								"user-active-methods",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Primary",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{BEARER_TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "method",
+									"value": "app",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{HOST}}/auth/mfa/change-primary-method/",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"auth",
+								"mfa",
+								"change-primary-method",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "password2",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{HOST}}/users/new/",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"users",
+						"new",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Root",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{BEARER_TOKEN}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}",
+					"host": [
+						"{{HOST}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
