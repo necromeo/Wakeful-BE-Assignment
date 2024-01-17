@@ -45,6 +45,8 @@ El proyecto está _dockerizado_, por ende, para levantarlo por completo, junto c
 Nota para correr los tests. Dado que Django necesita de conexión a la base de datos para los tests, lo más sencillo es correrlos dentro del mismo contenedor de Docker: `docker exec -it wakeful-backend python manage.py test`.
 ## Live App
 
+#### ⚠️ Por vencimiento de la opción gratuita de railway, la app de demo ya no se encuentra disponible. ⚠️
+
 Esta aplicación se encuentra deployada y accesible [aquí](https://wakeful-be-assignment-production.up.railway.app/) .
 Los mails con los códigos de validación salen desde una cuenta de testeo de Gmail[^2].
 Como hosting se usó [Railway](https://railway.app/), que permite subir un sitio de forma gratis por 500 horas y, además, ofrece una base de datos de Postgres. Heroku hubiese sido otra opción pero el plan gratis que ofrecían ya no es una opción desde noviembre del 2022.
