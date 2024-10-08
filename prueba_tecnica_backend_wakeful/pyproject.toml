@@ -30,7 +30,7 @@ optional = true
 [tool.poetry.dependencies]
 python = "^3.11"
 django = "^4.2"
-djangorestframework = "^3.14.0"
+djangorestframework = "^3.15.2"
 python-dotenv = "^1.0.0"
 pydantic = "^1.10.7"
 psycopg2-binary = "^2.9.9"
