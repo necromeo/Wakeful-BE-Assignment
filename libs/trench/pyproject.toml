@@ -1,21 +1,25 @@
-[tool.poetry]
+[project]
 name = "trench"
 version = "0.1.1"
 description = "Versión customizada de trench para aceptar un AbrastBaseUser sin username"
-authors = ["Ivan Andre Scheel <andrescheel@protonmail.com>"]
+authors = [{ name = "Ivan Andre Scheel", email = "andrescheel@protonmail.com" }]
+requires-python = "~=3.11"
 readme = "README.md"
-packages = [{include = "trench"}]
+dependencies = [
+    "pyotp>=2.6.0,<3",
+    "twilio>=8.4.0,<9",
+    "yubico-client>=1.13.0,<2",
+    "boto3>=1.21.37,<2",
+    "smsapi-client>=2.4.5,<3",
+    "pyjwt>=2.4.0,<3",
+]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-pyotp = "^2.6.0"
-twilio = "^8.4.0"
-yubico-client = "^1.13.0"
-boto3 = "^1.21.37"
-smsapi-client = "^2.4.5"
-pyjwt = "^2.4.0"
+[tool.hatch.build.targets.sdist]
+include = ["trench"]
 
+[tool.hatch.build.targets.wheel]
+include = ["trench"]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
